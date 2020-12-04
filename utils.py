@@ -10,3 +10,28 @@ def add_time_index(df):
     ndf[t_] = pd.to_datetime()
     ndf.set_index([t_])
     return ndf
+
+def nearest(df, pivot):
+    items = list(df.index)
+    n = items.copy()
+    for i in range(100):
+
+        m = min(n, key=lambda x: abs(x - pivot))
+        if pd.isna(df.loc[m][gl.G_LBL]):
+            n.remove(m)
+        else:
+            return m
+
+def nearest_deriv(df, pivot):
+    if not 'dg_dt' in df.columns:
+        print('Nope')
+        return
+    items = list(df.index)
+    n = items.copy()
+    for i in range(100):
+
+        m = min(n, key=lambda x: abs(x - pivot))
+        if pd.isna(df.loc[m]['dg_dt']):
+            n.remove(m)
+        else:
+            return m
