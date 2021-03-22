@@ -1,4 +1,4 @@
-<LEGACY CODE>
+<OLD CODE>
 
 # Analysing Continuous Glucose Monitoring Data
 
